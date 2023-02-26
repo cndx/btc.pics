@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>链上实时图片 Btc.Pics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.2">
+  <style>
+  html, body, p {
+	margin: 0;
+	padding: 0;
+	font-family: arial;
+}
+.active {
+	background-color: #f6f2ae;
+}
+.stretch {
+	width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
+img#blockchain {
+	min-width:1000px;
+}
+.mainsvg {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+.nav {
+	max-width: 1000px;
+	height: 70px;
+	border-top: solid 10px #666;
+	text-align: left;
+}
+a.bottom {
+	text-decoration: none;
+	color: #F6921E;
+	font-size: 20px;
+	width:360px;
+	padding:20px;
+}
+.right {
+	float:right;
+}
+a:hover {
+	cursor:pointer;
+}
+  rect {
+    fill: none;
+    pointer-events: all;
+  }
+  .node {
+    fill: #000;
+  }
+  .link {
+    stroke: #999;
+  }
+  h1 {
+    font-family: arial;
+    text-align: left;
+    font-size: 20px;
+    text-align: center;
+	padding-top: 50px;
+  }
+  img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  svg {
+    position: absolute;
+    left: 100px;
+  }
+  .nav {
+    position: relative;
+    top: 525px;
+  }
+  </style>
+<link rel="stylesheet" type="text/css" href="http://btayx.com/000000/dogetop.css">
+<script src="https://lib.sinaapp.com/js/jquery/2.2.4/jquery-2.2.4.min.js"></script>
+<style>
+body {overflow: hidden;}
+</style>
+<base target="_blank" />
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c65dd7d15ecfb3a23baf04543045f8b8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body onLoad="setTimeout('stopit()',30000);">
+<div class="com">
+	<div class="com__content">
+		<section class="com__section com__section--text centered" style="width: 100%; height: 100%; margin: 0 auto">
+		<div onclick='$("#dogetop").show();' id="container" style="width: 98%; height: 92%; margin: 10 auto">
+<h1><a title="默认稍后停止，点击设为不会停止增加" onClick="s=0;alert('已设为过半分钟不会停止增加\n点后面【实时图】停止\n\n注：若没有图请刷新');">饼链</a><a title="点击停止增加" onClick="socket.close();alert('已停\n刷新后重新开始,半分钟后停\n点前面【饼链】不停止\n\n注：若没有图请刷新');">实时图 Btc.Pics</a></h1>
+<h2><a href="index.htm" title="点击刷新"><img style="float:left" src="live-graph.svg"/></a></h2>
+
+			</div>
+		<div style="width: 100%; height: 8%; margin: 5 auto; text-align:center" ><span onclick='k++;if(k%2==0){document.getElementById("dogetop").style.visibility="hidden";}else{document.getElementById("dogetop").style.visibility="visible";}'>₿tc.Pics</span><span id="menu"></span><script src="http://btayx.com/000000/menu.js"></script></div>
+		</section>
+	</div>
+</div>
+<script>var showtime=10;var listnum=8;var k=1;</script>
+<script src="http://btayx.com/000000/dogetop.js" charset="utf-8"></script>
+
+
+<script src="d3.v3.min.js"></script>
+<script>
+var s=1;
+function stopit()
+{if(s)socket.close();}
+var nodesArray = [];
+
+var width = 800,
+    height = 500;
+width = document.body.clientWidth-280;
+if(width<360)width = 360;
+if(width>1600)width = 1600;
+height = document.body.clientHeight-200;
+if(height<360)height = 360;
+//var color = d3.scale.category20c();
+
+var force = d3.layout.force()
+    .size([width, height])
+    .nodes([]) // initialize with a single node
+    .linkDistance(15)
+    .charge(-10)
+    .on("tick", tick);
+
+var svg = d3.select("h2").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.append("rect")
+    .attr("width", width)
+    .attr("height", height);
+
+var nodes = force.nodes(),
+    links = force.links(),
+    node = svg.selectAll(".node"),
+    link = svg.selectAll(".link");
+
+restart();
+
+function tick() {
+  link.attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+
+  node.attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+}
+
+function restart() {
+  link = link.data(links);
+
+  link.enter().insert("line", ".node")
+     // .attr("stroke-width", function(d) {return d.value;})
+      .attr("class", "link");
+
+  node = node.data(nodes);
+
+  node.enter().insert("circle", ".cursor")
+      .attr("class", "node")
+      .attr("r", 3)
+      .style("fill", function(d) { return d.color; })
+      .on("click", addrInfo)
+      .call(force.drag);
+
+  force.start();
+}
+
+function addrInfo(d) {
+  window.open("https://blockchair.com/bitcoin/address/" + d.addr);
+}
+
+// Create socket instance
+var socket = new WebSocket('wss://ws.blockchain.info/inv');
+
+var hash = {};
+
+// Open the socket
+socket.onopen = function(event) {
+socket.send('{"op":"unconfirmed_sub"}');
+
+// Listen for message
+socket.onmessage = function(event) {
+  //console.log('Client received a message', event);
+  var tx = JSON.parse(event.data);
+  var inputs = tx.x.inputs;
+  var outputs = tx.x.out;
+  var size = tx.x.size / 1000;
+  if (size > 3) {
+    size = 3;
+  }
+
+  for (var i = 0; i < inputs.length; ++i) {
+    input = inputs[i].prev_out.addr;
+    //nodes.push({ addr: input});
+    //if addr not a node, make it a node
+    if (!hash[input]) {
+        nodes.push({ addr: input, color: "#e70000"});
+        nodesArray.push(input);
+        hash[input] = { addr: input, color: "#e70000"};
+      }
+    else {
+      if (hash[input]["color"]=="#38c700") {
+        hash[input]["color"]="gold";
+      }
+    }
+      // loop through outputs and add links
+    for (var k = 0; k < outputs.length; ++k) {
+      output = outputs[k].addr;
+      //nodes.push({ addr: output});
+      if (!hash[output]) {
+        nodes.push({ addr: output, color: "#38c700"});
+        nodesArray.push(output);
+        hash[output] = { addr: output, color: "#38c700"};
+        }
+      else {
+        if (hash[output]["color"]=="#e70000") {
+          hash[output]["color"]="gold";
+        }
+      }
+      //link = {"source":nodesArray.indexOf(input), "target":nodesArray.indexOf(output), "value":1};
+      links.push({"source":nodesArray.indexOf(input), "target":nodesArray.indexOf(output), "value":size});
+
+      //console.log(JSON.stringify(nodes));
+      };
+    };
+  //update nodes!
+  for (var j = 0; j <nodes.length; ++j) {
+    addr = nodes[j].addr;
+    if (hash[addr]["color"]=="gold") {
+      nodes[j].color = "gold";
+    }
+  }
+  restart();
+  };
+  //console.log(JSON.stringify(nodes));
+  //console.log(JSON.stringify(links));
+  //console.log(nodes)
+  // Restart the layout.
+  
+}
+
+socket.onclose = function(event) {
+ // console.log('Client notified socket has closed', event);
+};
+// To close socket
+// socket.close()
+
+</script>
+</body>
+</html>
