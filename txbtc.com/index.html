@@ -1,0 +1,481 @@
+<html>
+<head>
+<title>★提醒饼价和指数 Btc.Pics/txBtc.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=0.8" />
+<link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="https://lib.sinaapp.com/js/jquery/2.2.4/jquery-2.2.4.min.js"></script>
+<script>!window.jQuery && document.write('<script src="https://code.jquery.com/jquery-1.11.3.min.js"><\/script>');</script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta http-equiv="Refresh" content="600000" />
+<script type="text/javascript">
+usd=6.56;
+function getCookie(c_name)
+{
+if (document.cookie.length>0)
+  {
+  c_start=document.cookie.indexOf(c_name + "=")
+  if (c_start!=-1)
+    { 
+    c_start=c_start + c_name.length+1 
+    c_end=document.cookie.indexOf(";",c_start)
+    if (c_end==-1) c_end=document.cookie.length
+    return unescape(document.cookie.substring(c_start,c_end))
+    } 
+  }
+return ""
+}
+
+function setCookie(c_name,value,expiredays)
+{
+var exdate=new Date()
+exdate.setDate(exdate.getDate()+expiredays)
+document.cookie=c_name+ "=" +escape(value)+
+((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+}
+</script>
+<style>
+body{background-color:#000000;
+color:#FFFFFF;
+background-image:url(back.gif) !important;
+}
+A:visited {
+	COLOR: #008800; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #008800; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #008800; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff6600; text-deroration: none;
+position: relative; left: 1px; top: 1px; clip:rect(   )
+}
+#bihang_tipping{
+  width: 600px;
+  height: 550px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -300px;
+  margin-top: -275px;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  display: none;
+  z-index: 99999;
+}
+*html #bihang_tipping{
+  position: absolute;
+  margin-top: expression(0 - parseInt(this.offsetHeight / 2)+(TBWindowMargin=document.documentElement && document.documentElement.scrollTop||document.body.scrollTop)+'px');
+}
+.bihang_tipping_content{
+  width: 100%;
+  height: 100%;
+  color: #999;
+}
+.bihang_close{
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  cursor: pointer;
+}
+.bihang_close:hover{
+  color: #666;  
+}
+.bihang_tipping_shadow{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99998;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  filter: alpha(opacity=60);
+  opacity: .6;
+  display: none;
+}
+*html .bihang_tipping_shadow{
+  position: absolute;
+  height: expression(document.documentElement&&document.documentElement.scrollHeight||document.body.scrollHeight+'px');
+}
+*{
+			padding:0;
+			margin:0;
+		}
+		.bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		@media screen and (orientation: portrait) {	/* 竖屏 */
+
+		} 
+		@media screen and (orientation: landscape) { /* 横屏 */
+
+		}
+</style>
+<script>
+jQuery.support.cors = true;
+
+var counter = 0;
+function pic(n,id,zuo)
+{
+yanse="green";
+if(Math.random()>0.6)yanse="red";
+if(n==0)n=10;
+strs="<span id='"+id+"' onclick=show_modal('https://bing.ioliu.cn/v1/rand?w=640&h=480&id="+id+"') style='height:160px;float:"+zuo+";'> &nbsp;&nbsp;&nbsp; </span><div  onclick=show_modal('https://bing.ioliu.cn/v1/rand?w=640&h=480&id="+id+"') style='background-image:url("+yanse+"1.jpg);cursor:pointer;float:"+zuo+";height:160px;width:90px;background-position:-"+(n*92-71)+"px -160px;'></div>"
+return strs
+}
+function clump(){
+counter=0;
+getgushi();
+}
+
+//setInterval(function(){clump()},18000);
+</script>
+<base target="_blank">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c65dd7d15ecfb3a23baf04543045f8b8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+
+<body>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" 
+						aria-hidden="true">×
+				</button>
+				<!--<h4 class="modal-title" id="myModalLabel">
+					模态框（Modal）标题
+				</h4>-->
+			</div>
+			<div class="modal-body">
+				<img id="pics" src="" width="100%" />
+			</div>
+			<div class="modal-footer"><center>
+				<button type="button" class="btn btn-default" 
+						data-dismiss="modal">关闭
+				</button></center>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+function show_modal(urls){
+if(urls.length<10){
+document.getElementById("pics").src="http://image.sinajs.cn/newchart/"+urls+"/n/sh000001.gif";
+}else{document.getElementById("pics").src=urls;}
+$('#myModal').modal('show');
+return false
+}
+</script>
+<div class="bg">
+<h2><img src="bell.png" alt="">&nbsp;提醒&nbsp;tx<i class='fa fa-btc'></i>tc.com</h2>
+
+<center>
+<br /><div id="chain" class="chainso"><a href="https://chain.so/api/v2/get_price/BTC/USD?callback=txbtc_com" style="color:#eeeeee"><br />加载需时间，请您等待...</a></div>
+<br />
+<br />
+<br />
+<script type="text/javascript" src="countdown.js"></script>
+<script type="text/javascript">
+var today=new Date();
+			var tz=new Date();
+			hh=15;
+			if(tz.getHours()>=15)
+			{hh+=24;
+			if(tz.getDay()==5)hh+=48;
+			if(tz.getDay()==6)hh+=24;
+			}
+			if(tz.getHours()<15&&tz.getDay()==6)hh+=48;
+			if(tz.getHours()<15&&tz.getDay()==0)hh+=24;
+			tz.setHours(hh,-10,0);
+			t=(tz.getTime()-today.getTime())/1000;
+var myCountdown1 = new Countdown({
+				time: t, 
+				width:200, 
+				height:40, 
+				rangeHi:"hour"	// <- no comma on last item!
+			});
+function dogebtc(jg){
+$.get( "https://btayx.com/txbtc.com/api/?d=d&callback=?", function( response ) {
+huilv=1;
+if(getCookie("usdcny")!="")huilv=parseFloat(getCookie("usdcny"));
+clump();
+cdss=response.data.prices;
+cds=cdss.length;
+doge=cdss[0].price*1;
+if(cds==2)
+doge=(doge+1*cdss[1].price)/2;
+jgw=Math.floor(jg/10000);
+jgk=Math.floor(jg/1000)-10*jgw;
+jgb=Math.floor(jg/100)-10*(jgk+jgw*10);
+jgs=Math.floor(jg/10)-100*(jgk+jgw*10)-10*jgb;
+jgg=Math.floor(jg)-1000*(jgk+jgw*10)-100*jgb-10*jgs;
+
+  $( ".chainso" )
+    .html(  pic(jgg,"gg","right")+ pic(jgs,"bs","right")+ pic(jgb,"bb","right")+pic(jgk,"kk","right")+pic(jgw,"ww","right")+ "<br /><a href=https://www.baidu.com/s?ie=UTF-8&wd=huilv style='color:#eeeeee'>" +jg.toFixed(2) +"</a>×<input type='text'  style='width:40px;background-color: #393F3D;' value='"+huilv.toFixed(3)+"' onChange=\"setCookie('usdcny',this.value,30);\" >= <b style='font-size:24px;'>"+(jg*huilv).toFixed(0)+"</b><br /><br /><a href=https://btayx.com/btcdt.com/?coin=doge&n=10000&d=365&x=2020-5-8 style='color:#eeeeee'>1 Ðoge = " +(doge*100000000).toFixed(0) +" 聪₿</a> <b> ( ≈"+(doge*jg*huilv).toFixed(3)+" )</b>"); 
+jiange++;
+setTimeout("txbtc()",jiange*8000);
+if(jiange>20+cishu){jiange=10+cishu;cishu++;}
+}, "json" );
+document.title ="₿"+Math.floor(jg)+"提醒饼价和指数 txBTC.com";
+}
+function txbtc() {
+$.get( "https://btayx.com/txbtc.com/api/", function( res ) {
+huilv=1;
+cdss=JSON.parse(res).data.prices;
+	jg=cdss[0].price*huilv;
+	cds=cdss.length;
+	if(cds==2)
+		jg=(jg+cdss[1].price*huilv)/2;
+	if(cds>2){
+		jgz=jg;
+		jgd=jg;
+		jgx=jg;
+	for(i=1;i<cds;i++){
+     jgtemp=cdss[i].price*huilv;
+     if(jgtemp > jgd)jgd=jgtemp;
+     if(jgtemp < jgx)jgx=jgtemp;
+     jgz=jgz+jgtemp;
+	}
+   jg=(jgz-jgd-jgx)/(cds-2);}
+	dogebtc(jg);
+});
+}
+function txbtc_com( btcjiage ) {
+if(getCookie("usdcny")!="")usd=parseFloat(getCookie("usdcny"));
+huilv=1;
+	jg=btcjiage.data.prices[0].price*huilv;
+	cdss=btcjiage.data.prices;
+	cds=cdss.length;
+	if(cds==2)
+		jg=(jg+btcjiage.data.prices[1].price*huilv)/2;
+	if(cds>2){
+		jgz=jg;
+		jgd=jg;
+		jgx=jg;
+	for(i=1;i<cds;i++){
+     jgtemp=btcjiage.data.prices[i].price*huilv;
+     if(jgtemp > jgd)jgd=jgtemp;
+     if(jgtemp < jgx)jgx=jgtemp;
+     jgz=jgz+jgtemp;
+	}
+   jg=(jgz-jgd-jgx)/(cds-2);
+	}
+jgw=Math.floor(jg/10000);
+jgk=Math.floor(jg/1000)-10*jgw;
+jgb=Math.floor(jg/100)-10*(jgk+jgw*10);
+jgs=Math.floor(jg/10)-100*(jgk+jgw*10)-10*jgb;
+jgg=Math.floor(jg)-1000*(jgk+jgw*10)-100*jgb-10*jgs;
+  $( ".chainso" ).html(  pic(jgg,"gg","right")+ pic(jgs,"bs","right")+ pic(jgb,"bb","right")+pic(jgk,"kk","right")+pic(jgw,"ww","right")+ "<br /><br /><a href=https://btayx.com/btcie.com/btc/ target=_blank>1 USD = <b>" +Math.round(100000000/jg) +"</b> 聪₿</a>");
+  dogebtc(jg);
+//	jg=btcjiage.data.prices[1].price*7.01;
+}
+//https://chain.so/api/v2/get_price/BTC/USD
+//http://preev.com/pulse/units:btc+usd/sources:bitstamp+kraken
+//{"xdg":{"btc":{"kraken":{"last":"2.60000e-7","volume":"4.66982"}}},"btc":{"usd":{"bitstamp":{"last":"10167.0","volume":"1.71538e+8"},"kraken":{"last":"10166.6","volume":"1.28461e+8"}}},"cny":{"usd":{"other":{"last":0.14201117773967897,"volume":null}}},"usd":{"btc":{"bitstamp":{"last":"0.0000983574","volume":"17110.9"},"kraken":{"last":"0.0000983613","volume":"12803.8"}}},"other":{"slot":null,"ver":"b"}}
+
+var jiange=3;
+var cishu=1;
+function idgui(btc){
+//http://preev.com/pulse/units:xdg+cny/sources:bitfinex+bitstamp+kraken
+$.get( "https://btayx.com/txbtc.com/api/?callback=?", function( response ) {
+huilv=1;
+if(getCookie("usdcny")!="")huilv=parseFloat(getCookie("usdcny"));
+if(huilv==1)huilv=1/response.cny.usd.other.last;
+clump();
+jgx=response.btc.usd.bitfinex.last*1;
+jg=response.btc.usd.bitstamp.last*1;
+jgk=response.btc.usd.kraken.last*1;
+jg=(0+jg+jgk+jgx)/3;
+doge=response.xdg.btc.kraken.last;
+
+//jg=response.data[0].quote.USD.price;
+//huilv=response.data[0].quote.USD.percent_change_24h;
+//eth=response.data[1].quote.USD.price;
+jgw=Math.floor(jg/10000);
+jgk=Math.floor(jg/1000)-10*jgw;
+jgb=Math.floor(jg/100)-10*(jgk+jgw*10);
+jgs=Math.floor(jg/10)-100*(jgk+jgw*10)-10*jgb;
+jgg=Math.floor(jg)-1000*(jgk+jgw*10)-100*jgb-10*jgs;
+//cb2=Math.round(50*(response.data.markets.btce.daily_change.perc+response.data.markets.coinbase.daily_change.perc))/100; + "("+cb2+ "%)"
+  $( ".chainso" )
+    .html(  pic(jgg,"gg","right")+ pic(jgs,"bs","right")+ pic(jgb,"bb","right")+pic(jgk,"kk","right")+pic(jgw,"ww","right")+ "<br />" +Math.floor(jg) +"×<input type='text'  style='width:36px;background-color: #393F3D;' value='"+huilv.toFixed(3)+"' onChange=\"setCookie('usdcny',this.value,30);\" >= <b style='font-size:24px;'>"+(jg*huilv).toFixed(0)+"</b><br /><br /><a href=http://btayx.com/btcdt.com/?coin=doge&n=10000&d=365&x=2020-5-8 style='color:#eeeeee'>1 Ðoge = " +(doge*100000000).toFixed(0) +" 聪₿</a> <b> ( ≈"+(doge*jg*huilv).toFixed(3)+" )</b>"); 
+jiange++;
+setTimeout("idgui("+jg+")",jiange*3000);
+if(jiange>20+cishu){jiange=10+cishu;cishu++;}
+}, "json" );
+if(btc!=2500){document.title ="₿"+Math.floor(btc)+"提醒饼价和指数 txBTC.com";}
+}
+//setTimeout("idgui(2500)",100);
+</script>
+
+<div id="agushi"></div><br />
+<div id="gushi"></div>
+<script type="text/javascript" src="https://btayx.com/txbtc.com/api/?callback=idgui"></script>
+<script type="text/javascript">
+function guzhishu(jg){
+jgk=Math.floor(jg/1000);
+jgb=Math.floor(jg/100)-10*jgk;
+jgs=Math.floor(jg/10)-100*jgk-10*jgb;
+jgg=Math.floor(jg)-1000*jgk-100*jgb-10*jgs;
+document.getElementById("gushi").innerHTML= pic(jgk,"k","left")+ pic(jgb,"b","left")+ pic(jgs,"s","left")+ pic(jgg,"g","left");
+}
+var yestclose=3485;
+function daygushi(strss)
+{
+//https://blog.csdn.net/u011331731/article/details/101353475
+//strss[0].stat 2022-02-10,3481.91,3485.91,5.96,0.17%,3464.22,3488.86,355666240,40496944.00,-
+yestclose=strss[0].hq[0][2];
+guzhishu(yestclose);
+jiahao="";
+if(strss[0].hq[0][3]>0)jiahao="+";
+days=strss[0].hq[0][0].split("-");
+document.getElementById("agushi").innerHTML=days[0]+"<a href=http://image.sinajs.cn/newchart/monthly/n/sh000001.gif onclick=\"return show_modal('monthly')\">-"+days[1]+"</a><a target=_blank href=http://image.sinajs.cn/newchart/weekly/n/sh000001.gif onclick=\"return show_modal('weekly')\">-</a><a href=http://image.sinajs.cn/newchart/daily/n/sh000001.gif onclick=\"return show_modal('daily')\">"+days[2]+" </a><a target=_blank href=http://image.sinajs.cn/newchart/min/n/sh000001.gif  onclick=\"return show_modal('min')\">"+"<i class='fa fa-line-chart'></i></a>"+yestclose+" <b style='font-size:22px;'>"+strss[0].hq[0][4]+"</b> "+jiahao+strss[0].hq[0][3];
+}
+
+function gushi(strss)
+{
+//dds({"date":"20220211","symbol":"000001","lastVolume":345087800,"data":[["0930",3472.28,3472.28,345087800]],"name":"\u4e0a\u8bc1\u6307\u6570","yestclose":3485.91,"count":242});
+var newid=strss["data"].length-1;
+jg=strss["data"][newid][1];
+guzhishu(jg);
+yestclose=strss["yestclose"];
+var zdf=(jg-yestclose)*100/yestclose;
+jiahao="";k++;
+if(zdf>0)jiahao="+";
+document.getElementById("agushi").innerHTML="<a target=_blank href=http://image.sinajs.cn/newchart/daily/n/sh000001.gif  onclick=\"return show_modal('daily')\"><i class='fa fa-history'></i>"+strss["date"].replace("20220","")+"</a>"+strss["data"][newid][0]+" "+yestclose+"<a target=_blank href=http://image.sinajs.cn/newchart/min/n/sh000001.gif  onclick=\"return show_modal('min')\"><i class='fa fa-line-chart'></i>"+" "+jg+"  </a><b style='font-size:22px;'>"+jiahao+zdf.toFixed(2)+"%</b> "+(jg-yestclose).toFixed(2);
+}
+
+function gushi5(strss)
+{
+//gd([{"day":"2022-02-11 11:05:00","open":"3495.956","high":"3500.147","low":"3495.956","close":"3497.690","volume":"579876700"}])
+var jg=strss[0]["close"];
+guzhishu(jg);
+var zdf=(jg-yestclose)*100/yestclose;
+jiahao="";k++;
+if(zdf>0)jiahao="+";
+document.getElementById("agushi").innerHTML="<a target=_blank href=http://image.sinajs.cn/newchart/monthly/n/sh000001.gif  onclick=\"return show_modal('monthly')\"><i class='fa fa-history'></i></a><a target=_blank href=http://image.sinajs.cn/newchart/daily/n/sh000001.gif  onclick=\"return show_modal('daily')\">"+strss[0]["day"].replace("2022-0","").replace(":00","")+"</a>"+" "+yestclose+"<a target=_blank href=http://image.sinajs.cn/newchart/min/n/sh000001.gif  onclick=\"return show_modal('min')\"><i class='fa fa-line-chart'></i>"+" "+jg+"  </a><b style='font-size:22px;'>"+jiahao+zdf.toFixed(2)+"%</b> "+(jg-yestclose).toFixed(2);
+}
+
+var t=0;
+function getgushi(){
+t++;
+var tz=new Date();
+if(tz.getHours()<9)t=0;
+if(tz.getHours()>=16)t=0;
+if(tz.getDay()==0)t=0;
+if(tz.getDay()==6)t=0;
+if(t==0){
+$.getJSON("https://q.stock.sohu.com/hisHq?code=zs_000001&stat=0&order=D&period=d&rt=jsonp&callback=?", function(json){
+  daygushi(json);
+  });}
+if(t>60){t=0;
+$.getJSON("https://btayx.com/txbtc.com/gu/?callback=?", function(json){
+  gushi5(json);
+});}
+}
+function setts(){
+t++;
+setTimeout("setts()",1000);
+}
+setts();
+
+function agetgushi(){
+$.getJSON("https://img1.money.126.net/data/hs/time/today/0000001.json?callback=?", function(json){
+  gushi(json);
+});
+}
+function daygetgushi(){
+$.getJSON("https://q.stock.sohu.com/hisHq?code=zs_000001&stat=0&order=D&period=d&rt=jsonp&callback=?", function(json){
+  daygushi(json);
+  $.getJSON("https://btayx.com/txbtc.com/gu/?callback=?", function(json){
+  gushi5(json);
+});
+});
+}
+daygetgushi();
+
+</script>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div id="last" style="font-size:12px;"></div>
+<div id="bjgjs" ></div>
+
+</center>
+</div><script>
+setInterval(function(){counter+=1;ss="";if(counter<=9)ss="0";document.getElementById("last").innerHTML="数据刷新于: "+ss+counter+" s 前  &nbsp;&nbsp; <a href=https://btayx.com/txbtc.com/>2023 &copy txbtc.com</a> <a href='http://btayx.com/btcie.com'> <a href=https://btc.pics/>Btc.Pics</a> <a href='http://btayx.com/btcie.com'><i class='fa fa-btc'></i></a> &nbsp;&nbsp;<a href='https://ahr999.com'>9<i class='fa fa-btc'></i> </a><a href='http://btayx.com/bcndx.com'>比对</a> &nbsp;&nbsp;<a href='https://8nostr.com'><b>8Nostr</b></a>  &nbsp;&nbsp;<a href='http://bijingpai.com'>拍</a> &nbsp;<a href='https://iris.to/cndx@ahr999.com'>cndx</a>&nbsp;<a href='http://dogefei.com'>微博</a> &nbsp;&nbsp;<a href='lightning:cndx@8nostr.com' target=_self>LN</a><a href='https://getalby.com/p/cndx'>⚡ &nbsp;</a>";},1000);
+
+	changeOrientation($('.bg'));
+
+	function changeOrientation( $print ){  
+	  var width = document.documentElement.clientWidth;
+	  var height =  document.documentElement.clientHeight;
+	  if( width < height ){
+		  console.log(width + " " + height);
+		  $print.width(height);
+		   $print.height(width);
+		  $print.css('top',  (height-width)/2 );
+		  $print.css('left',  0-(height-width)/2 );
+		  $print.css('transform' , 'rotate(90deg)');
+		   $print.css('transform-origin' , '50% 50%');
+	 } 
+	 
+	   var evt = "onorientationchange" in window ? "orientationchange" : "resize";
+	      
+		window.addEventListener(evt, function() {
+		    console.log(evt);
+			setTimeout( function(){
+				var width = document.documentElement.clientWidth;
+				 var height =  document.documentElement.clientHeight;
+				 if( width > height ){
+				   
+					$print.width(width);
+					$print.height(height);
+					$print.css('top',  0 );
+					$print.css('left',  0 );
+					$print.css('transform' , 'none');
+					$print.css('transform-origin' , '50% 50%');
+				 }
+				 else{
+					$print.width(height);
+					$print.height(width);
+					$print.css('top',  (height-width)/2 );
+					$print.css('left',  0-(height-width)/2 );
+					$print.css('transform' , 'rotate(90deg)');
+					$print.css('transform-origin' , '50% 50%');
+				 }
+				
+			}  , 300 );
+	
+		}, false);
+	}
+</script>
+</body>
+</html>
