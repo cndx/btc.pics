@@ -1,0 +1,108 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>聪本位</title>
+<link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<base target="_blank" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://lib.sinaapp.com/js/jquery/2.2.4/jquery-2.2.4.min.js"></script>
+<style>
+body{
+width:96%;
+max-width:890px;
+margin:auto;
+margin-top:18px;
+}
+A:visited {
+	COLOR: #008800; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #008800; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #008800; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff6600; text-deroration: none;
+position: relative; left: 1px; top: 1px; clip:rect(   )
+}
+tr:nth-child(even){
+background-color:#527596;
+color:#fff;
+}
+tr:hover {
+background-color:#66ff66;
+color:#111111;
+}
+</style>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c65dd7d15ecfb3a23baf04543045f8b8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+<h1><a href="https://btc.pics" style="color:#111111;">Btc.Pics/sat</a></h1>
+<div id="btc"></div>
+<div id="chain"></div><br><br>
+<span id="menu"></span><script src="https://btayx.com/000000/menu.js"></script>
+<script>
+var jg=22000;
+var doge=300;
+var usdcny=6.9;
+//http://preev.com/pulse/units:xdg+cny/sources:bitfinex+bitstamp+kraken
+$.getJSON( "https://btayx.com/txbtc.com/api/?callback=?", function( response ) {
+
+usdcny=1/response.cny.usd.other.last;
+jgx=response.btc.usd.bitfinex.last*1;
+jg=response.btc.usd.bitstamp.last*1;
+jgk=response.btc.usd.kraken.last*1;
+jg=(0+jg+jgk+jgx)/3;
+doge=response.xdg.btc.kraken.last*100000000;
+btc.innerHTML=usdcny.toFixed(4)+" &nbsp; BTC "+jg.toFixed(2)+"  &nbsp; Doge "+((jg/100000000)*doge).toFixed(4);
+xxxSat();
+});
+
+function xxxSat(){
+$.getJSON( "https://www.mycurrency.net/US.json", function( res ) {
+huilv=res.rates[1].rate;
+huilv2=res.rates[2].rate;
+if(huilv < huilv2)huilv=huilv2;   
+ var s=res.rates;
+ var txt="<table width='100%'><tr><td><b>&nbsp;&nbsp;USD/CNY</b> ≈</td><td>&nbsp;"+huilv.toFixed(4)+"</td><td>  <b>&nbsp;DOGE/SAT</b> ≈ "+doge.toFixed(0)+"</td></tr>";
+ huilv=(huilv+usdcny)/2;
+ for(i=1;i<s.length;i++){
+ var sats=100000000/jg/s[i].rate;
+ var biming=""+s[i].currency_name_zh;
+ biming=biming.replace((s[i].name_zh+"").replace("共和国",""),"");
+ txt=txt+"<tr><td style='width:110px;text-align:right;'><b>"+s[i].currency_code+"/SAT</b> ≈&nbsp;</td><td style='width:90px;text-align:right;'><b>"+(""+sats.toFixed(3)).replace(".","</b>.")+"&nbsp;&nbsp;</td><td>&nbsp;"+(s[i].name_zh+"").replace("null","")+" "+s[i].currency_name+" "+biming+"</td></tr>";
+ }
+ sats=100000000/jg/s[0].rate;
+ txt=txt+"<tr><td style='width:110px;text-align:right;'><b>"+s[0].currency_code+"/SAT</b> ≈&nbsp;</td><td style='width:90px;text-align:right;'><b>"+(""+sats.toFixed(3)).replace(".","</b>.")+"&nbsp;&nbsp;</td><td>&nbsp;"+(s[0].name_zh+"").replace("null","")+" "+s[0].currency_name+" "+s[0].currency_name_zh+"</td></tr>";
+ 
+chain.innerHTML="<br/>( 价*<b>"+huilv.toFixed(5)+" &nbsp;&nbsp; ₿≈"+Math.round(jg*huilv)+"&nbsp;&nbsp;  &ETH;≈"+(jg*doge*huilv/100000000).toFixed(4)+"</b> 元 )<br><hr />"+txt+"</table>"; 
+
+}, "json" );
+}
+</script>
+<script>
+r=100;g=160;b=100;
+r1=r+Math.floor(Math.random()*(255-r));
+g1=g+Math.floor(Math.random()*(255-g));
+b1=b+Math.floor(Math.random()*(255-b));
+r2=r+Math.floor(Math.random()*(255-r));
+g2=g+Math.floor(Math.random()*(255-g));
+b2=b+Math.floor(Math.random()*(255-b));
+r3=r+Math.floor(Math.random()*(255-r));
+g3=g+Math.floor(Math.random()*(255-g));
+b3=b+Math.floor(Math.random()*(255-b));
+background="white linear-gradient(120deg,rgb("+r1+", "+g1+", "+b1+"),rgb("+r2+", "+g2+", "+b2+"),rgb("+r3+","+g2+", "+b3+"))";
+document.body.style.background=background;
+</script>
+</body>
+</html>
