@@ -47,12 +47,16 @@ ur=urls.split("http");
 if(ur.length==2){
 urls="http"+ur[1];
 urls=document.getElementById("iris").value+urls;
+u=urls.split(" ");
+urls=u[0];
 urls=urls+"<br><img style='max-width:100%' src='"+urls+"' />";
 }
 if(ur.length>2){
 urls="";
 for(i=1;i<ur.length;i++){
 urlstmp="http"+ur[i];
+u=urlstmp.split(" ");
+urlstmp=u[0];
   if(urlstmp==urlstmp.replace("imgproxy.iris.to","")){
 urlstmp=document.getElementById("iris").value+urlstmp;
 urls=urls+urlstmp+"<br><img style='max-width:100%' src='"+urlstmp+"' /><br>";
