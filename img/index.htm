@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Btc.Pics/img</title>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base target="_blank" />
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c65dd7d15ecfb3a23baf04543045f8b8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<style>
+input{
+width:100%;
+font-size:32px;
+}
+</style>
+</head>
+<body>
+<input id="iris" type="text" style="background-color:#CCFFCC" value="https://imgproxy.iris.to/insecure/plain/">
+<br><br>
+<input id="imgs1" type="text" value="IMG-url：https://8nostr.com/cndx/" onclick="getimg('src1',this.value)" onkeyup="getimg('src1',this.value)" onchange="getimg('src1',this.value)"><div id="src1"></div>
+<br><br>
+<input id="imgs2" type="text" value="" onkeyup="getimg('src2',this.value)" onchange="getimg('src2',this.value)"><div id="src2"></div>
+<br><br>
+<input id="imgs3" type="text" value="" onkeyup="getimg('src3',this.value)" onchange="getimg('src3',this.value)"><div id="src3"></div>
+<br><br>
+<input id="imgs4" type="text" value="" onkeyup="getimg('src4',this.value)" onchange="getimg('src4',this.value)"><div id="src4"></div>
+<br><br>
+<input id="imgs5" type="text" value="" onkeyup="getimg('src5',this.value)" onchange="getimg('src5',this.value)"><div id="src5"></div>
+<br><br>
+<input id="imgs6" type="text" value="" onkeyup="getimg('src6',this.value)" onchange="getimg('src6',this.value)"><div id="src6"></div>
+<br><br>
+<script>
+function getimg(divid,urls){
+ur=urls.split("http");
+if(ur.length==2){
+urls="http"+ur[1];
+urls=document.getElementById("iris").value+urls;
+urls=urls+"<br><img style='max-width:100%' src='"+urls+"' />";
+}
+if(ur.length>2){
+urls="";
+for(i=1;i<ur.length;i++){
+urlstmp="http"+ur[i];
+urlstmp=document.getElementById("iris").value+urlstmp;
+urls=urls+urlstmp+"<br><img style='max-width:100%' src='"+urlstmp+"' /><br>";
+}
+}
+document.getElementById(divid).innerHTML=urls;
+}
+
+
+r=100;g=160;b=100;
+r1=r+Math.floor(Math.random()*(255-r));
+g1=g+Math.floor(Math.random()*(255-g));
+b1=b+Math.floor(Math.random()*(255-b));
+r2=r+Math.floor(Math.random()*(255-r));
+g2=g+Math.floor(Math.random()*(255-g));
+b2=b+Math.floor(Math.random()*(255-b));
+r3=r+Math.floor(Math.random()*(255-r));
+g3=g+Math.floor(Math.random()*(255-g));
+b3=b+Math.floor(Math.random()*(255-b));
+background="white linear-gradient(120deg,rgb("+r1+", "+g1+", "+b1+"),rgb("+r2+", "+g2+", "+b2+"),rgb("+r3+","+g2+", "+b3+"))";
+document.body.style.background=background;
+</script>
+</body>
+</html>
