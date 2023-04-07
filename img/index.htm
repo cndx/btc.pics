@@ -36,7 +36,12 @@ font-size:32px;
 <br><br>
 <input id="imgs6" type="text" value="" onkeyup="getimg('src6',this.value)" onchange="getimg('src6',this.value)"><div id="src6"></div>
 <br><br>
+<input id="imgs7" type="text" value="" onkeyup="getimg('src7',this.value)" onchange="getimg('src7',this.value)"><div id="src7"></div>
+<br><br>
+<input id="imgs8" type="text" value="" onkeyup="getimg('src8',this.value)" onchange="getimg('src8',this.value)"><div id="src8"></div>
 <script>
+let now = new Date();
+document.getElementById("imgs1").value="IMG：https://8nostr.com/cndx/?"+now.toLocaleDateString()+now.toLocaleTimeString();
 function getimg(divid,urls){
 ur=urls.split("http");
 if(ur.length==2){
@@ -48,9 +53,10 @@ if(ur.length>2){
 urls="";
 for(i=1;i<ur.length;i++){
 urlstmp="http"+ur[i];
+  if(urlstmp==urlstmp.replace("imgproxy.iris.to","")){
 urlstmp=document.getElementById("iris").value+urlstmp;
 urls=urls+urlstmp+"<br><img style='max-width:100%' src='"+urlstmp+"' /><br>";
-}
+}}
 }
 document.getElementById(divid).innerHTML=urls;
 }
