@@ -35,9 +35,7 @@ font-size:32px;
 </style>
 </head>
 <body>
-<input id="iris" type="text" style="background-color:#CCFFCC" value="https://imgproxy.iris.to/insecure/plain/">
-<br><br>
-<input id="imgs1" type="text" style="width:50%" value="IMG-url：https://8nostr.com/cndx/" onclick="getimg('src1',this.value)" onkeyup="getimg('src1',this.value)" onchange="getimg('src1',this.value)"><a href="https://www.nostr.guru/">  <img height="24" src="https://www.nostr.guru/_next/image?url=%2Flogo.jpg&w=48&q=75" /> NostrGateway</a><input id="getways" style="width:20%;float:right" type="text" value="" onPaste="getway(this.value)" onkeyup="getway(this.value)" onchange="getway(this.value)"><div id="src1"></div><script>
+<input id="imgs1" type="text" style="width:38%" value="BTC.pics/IMG ：https://8nostr.com/cndx/" onclick="getimg('src1',this.value)" onkeyup="getimg('src1',this.value)" onchange="getimg('src1',this.value)"><span style="width:61%;float:right"><a href="https://8nostr.com/">  8Nostr </a><a href="https://www.nostr.guru/">  <img height="24" src="https://www.nostr.guru/_next/image?url=%2Flogo.jpg&w=48&q=75" /> Gateway</a><input id="getways" style="width:70%;float:right" type="text" value="" onPaste="getway(this.value)" onkeyup="getway(this.value)" onchange="getway(this.value)"></span><div id="src1"></div><script>
 function getway(code){
 if(code.substr(0,7)!="nevent1"){
 ur=code.split("nevent1");
@@ -52,6 +50,8 @@ noteids=noteids+"<br>"+u[0]+"<br>";
 document.getElementById("src1").innerHTML=noteids;
 }}
 </script>
+<br><br>
+<input id="iris" type="text" style="background-color:#CCFFCC" value="https://imgproxy.iris.to/insecure/plain/">
 <br><br>
 <input id="imgs2" type="text" value="" onPaste="getimg('src2',this.value)" onkeyup="getimg('src2',this.value)" onchange="getimg('src2',this.value)"><div id="src2"></div>
 <br><br>
@@ -76,11 +76,18 @@ document.getElementById("src1").innerHTML=noteids;
 <input id="imgs12" type="text" value="" onkeyup="getimg('src12',this.value)" onchange="getimg('src12',this.value)"><div id="src12"></div>
 <script>
 let now = new Date();
-document.getElementById("imgs1").value="IMG：https://8nostr.com/cndx/?"+now.toLocaleDateString()+now.toLocaleTimeString();
+document.getElementById("imgs1").value="BTC.pics/IMG ：https://8nostr.com/cndx/?"+now.toLocaleDateString()+now.toLocaleTimeString();
 function getimg(divid,urls){
-if(urls.length>10000){
-urls=urls.length+"<br><img style='max-width:100%' src='data:image/webp;base64,"+urls+"' /><br>";
-}else{
+if(urls.length>1000){
+ur=urls.split(" ");
+for(i=0;i<ur.length;i++){
+if(ur[i].length>1000){
+urls=ur[i].length+"<br><img style='max-width:100%' src='data:image/webp;base64,"+ur[i]+"' /><br>";
+break;
+}
+}
+}
+if(urls==urls){
 ur=urls.split("http");
 if(ur.length==2){
 urls="http"+ur[1];
