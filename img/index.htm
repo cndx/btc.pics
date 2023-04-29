@@ -15,6 +15,19 @@ var _hmt = _hmt || [];
 })();
 </script>
 <style>
+A:visited {
+	COLOR: #006600; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #006600; TEXT-DECORATION: none
+}
+A:link {
+	COLOR:#002800; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff6600; text-deroration: none;
+position: relative; left: 1px; top: 1px; clip:rect(   )
+}
 input{
 width:100%;
 font-size:32px;
@@ -24,7 +37,21 @@ font-size:32px;
 <body>
 <input id="iris" type="text" style="background-color:#CCFFCC" value="https://imgproxy.iris.to/insecure/plain/">
 <br><br>
-<input id="imgs1" type="text" value="IMG-url：https://8nostr.com/cndx/" onclick="getimg('src1',this.value)" onkeyup="getimg('src1',this.value)" onchange="getimg('src1',this.value)"><div id="src1"></div>
+<input id="imgs1" type="text" style="width:50%" value="IMG-url：https://8nostr.com/cndx/" onclick="getimg('src1',this.value)" onkeyup="getimg('src1',this.value)" onchange="getimg('src1',this.value)"><a href="https://www.nostr.guru/">  <img height="24" src="https://www.nostr.guru/_next/image?url=%2Flogo.jpg&w=48&q=75" /> NostrGateway</a><input id="getways" style="width:20%;float:right" type="text" value="" onPaste="getway(this.value)" onkeyup="getway(this.value)" onchange="getway(this.value)"><div id="src1"></div><script>
+function getway(code){
+if(code.substr(0,7)!="nevent1"){
+ur=code.split("nevent1");
+noteids="";
+for(i=1;i<ur.length;i++){
+urls="nevent1"+ur[i];
+urls=urls.replace("\\n"," ").replace("\n"," ");
+u=urls.split(" ");
+document.getElementById("getways").value=u[0];
+noteids=noteids+"<br>"+u[0]+"<br>";
+}
+document.getElementById("src1").innerHTML=noteids;
+}}
+</script>
 <br><br>
 <input id="imgs2" type="text" value="" onPaste="getimg('src2',this.value)" onkeyup="getimg('src2',this.value)" onchange="getimg('src2',this.value)"><div id="src2"></div>
 <br><br>
@@ -39,14 +66,26 @@ font-size:32px;
 <input id="imgs7" type="text" value="" onkeyup="getimg('src7',this.value)" onchange="getimg('src7',this.value)"><div id="src7"></div>
 <br><br>
 <input id="imgs8" type="text" value="" onkeyup="getimg('src8',this.value)" onchange="getimg('src8',this.value)"><div id="src8"></div>
+<br><br>
+<input id="imgs9" type="text" value="" onkeyup="getimg('src9',this.value)" onchange="getimg('src9',this.value)"><div id="src9"></div>
+<br><br>
+<input id="imgs10" type="text" value="" onkeyup="getimg('src10',this.value)" onchange="getimg('src10',this.value)"><div id="src10"></div>
+<br><br>
+<input id="imgs11" type="text" value="" onkeyup="getimg('src11',this.value)" onchange="getimg('src11',this.value)"><div id="src11"></div>
+<br><br>
+<input id="imgs12" type="text" value="" onkeyup="getimg('src12',this.value)" onchange="getimg('src12',this.value)"><div id="src12"></div>
 <script>
 let now = new Date();
 document.getElementById("imgs1").value="IMG：https://8nostr.com/cndx/?"+now.toLocaleDateString()+now.toLocaleTimeString();
 function getimg(divid,urls){
+if(urls.length>10000){
+urls=urls.length+"<br><img style='max-width:100%' src='data:image/webp;base64,"+urls+"' /><br>";
+}else{
 ur=urls.split("http");
 if(ur.length==2){
 urls="http"+ur[1];
 urls=document.getElementById("iris").value+urls;
+urls=urls.replace("\\n"," ").replace("\n"," ");
 u=urls.split(" ");
 urls=u[0];
 urls=urls+"<br><img style='max-width:100%' src='"+urls+"' />";
@@ -55,13 +94,14 @@ if(ur.length>2){
 urls="";
 for(i=1;i<ur.length;i++){
 urlstmp="http"+ur[i];
+urlstmp=urlstmp.replace("\\n"," ").replace("\n"," ");
 u=urlstmp.split(" ");
 urlstmp=u[0];
   if(urlstmp==urlstmp.replace("imgproxy.iris.to","")){
 urlstmp=document.getElementById("iris").value+urlstmp;
 urls=urls+urlstmp+"<br><img style='max-width:100%' src='"+urlstmp+"' /><br>";
 }}
-}
+}}
 document.getElementById(divid).innerHTML=urls;
 }
 
