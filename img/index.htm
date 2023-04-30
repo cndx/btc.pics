@@ -1,9 +1,9 @@
 <html>
 <head>
-<title>Btc.Pics/img</title>
+<title>Btc.Pics/img for Nostr</title>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=0.9">
 <base target="_blank" />
 <script>
 var _hmt = _hmt || [];
@@ -54,7 +54,7 @@ document.getElementById("src1").innerHTML=noteids;
 <input id="iris" type="text" style="background-color:#CCFFCC" value="https://imgproxy.iris.to/insecure/plain/">
 <br><br>
 <input id="imgs2" type="text" value="" onPaste="getimg('src2',this.value)" onkeyup="getimg('src2',this.value)" onchange="getimg('src2',this.value)"><div id="src2"></div>
-<br><br>
+<br>
 <input id="imgs3" type="text" value="" onkeyup="getimg('src3',this.value)" onchange="getimg('src3',this.value)"><div id="src3"></div>
 <br><br>
 <input id="imgs4" type="text" value="" onkeyup="getimg('src4',this.value)" onchange="getimg('src4',this.value)"><div id="src4"></div>
@@ -66,19 +66,24 @@ document.getElementById("src1").innerHTML=noteids;
 <input id="imgs7" type="text" value="" onkeyup="getimg('src7',this.value)" onchange="getimg('src7',this.value)"><div id="src7"></div>
 <br><br>
 <input id="imgs8" type="text" value="" onkeyup="getimg('src8',this.value)" onchange="getimg('src8',this.value)"><div id="src8"></div>
-<br><br>
-<input id="imgs9" type="text" value="" onkeyup="getimg('src9',this.value)" onchange="getimg('src9',this.value)"><div id="src9"></div>
-<br><br>
-<input id="imgs10" type="text" value="" onkeyup="getimg('src10',this.value)" onchange="getimg('src10',this.value)"><div id="src10"></div>
-<br><br>
-<input id="imgs11" type="text" value="" onkeyup="getimg('src11',this.value)" onchange="getimg('src11',this.value)"><div id="src11"></div>
-<br><br>
-<input id="imgs12" type="text" value="" onkeyup="getimg('src12',this.value)" onchange="getimg('src12',this.value)"><div id="src12"></div>
+<br>
+<div id="moreinput"></div>
+<input id="allnums" style="width:48%;text-align:center;" value="30"> <button style="width:48%;font-size:32px;" onclick="addmore()">Add More Inputs</button>
 <script>
+function addmore(){
+var inputstr="";
+for(i=8;i<1+1*document.getElementById("allnums").value;i++){
+inputstr=inputstr+'<input id="imgs'+i+'" type="text" value="" onkeyup="getimg(\'src'+i+'\',this.value)" onchange="getimg(\'src'+i+'\',this.value)"><div id="src'+i+'">'+i+'</div>';
+}
+document.getElementById("moreinput").innerHTML=inputstr;
+}
+
+
 let now = new Date();
 document.getElementById("imgs1").value="BTC.pics/IMG ：https://8nostr.com/cndx/?"+now.toLocaleDateString()+now.toLocaleTimeString();
 function getimg(divid,urls){
 if(urls.length>1000){
+urls=urls.replace("\""," ");
 ur=urls.split(" ");
 for(i=0;i<ur.length;i++){
 if(ur[i].length>1000){
