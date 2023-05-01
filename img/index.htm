@@ -36,7 +36,7 @@ font-size:32px;
 </style>
 </head>
 <body>
-<input id="imgs1" type="text" style="width:38%" value="BTC.pics/IMG ：https://8nostr.com/cndx/" onclick="getimg('src1',this.value)" onkeyup="getimg('src1',this.value)" onchange="getimg('src1',this.value)"><span style="width:61%;float:right"><a href="https://8nostr.com/">  8Nostr </a><a href="https://www.nostr.guru/">  <img height="24" src="https://www.nostr.guru/_next/image?url=%2Flogo.jpg&w=48&q=75" /> Gateway</a><input id="getways" style="width:70%;float:right" type="text" value="" onPaste="getway(this.value)" onkeyup="getway(this.value)" onchange="getway(this.value)"></span><div id="src1"></div><script>
+<input id="imgs1" type="text" style="width:36%" value="BTC.pics/IMG ：https://8nostr.com/cndx/" onclick="getimg('src1',this.value)" onkeyup="getimg('src1',this.value)" onchange="getimg('src1',this.value)"><span style="width:61%;float:right"><a href="https://8nostr.com/">  8Nostr </a><a href="https://www.nostr.guru/">  <img height="24" src="https://www.nostr.guru/_next/image?url=%2Flogo.jpg&w=48&q=75" /> Gateway</a><input id="getways" style="width:70%;float:right" type="text" value="" onPaste="getway(this.value)" onkeyup="getway(this.value)" onchange="getway(this.value)"></span><div id="src1"></div><script>
 function getway(code){
 if(code.substr(0,7)!="nevent1"){
 ur=code.split("nevent1");
@@ -97,7 +97,7 @@ ur=urls.split("http");
 if(ur.length==2){
 urls="http"+ur[1];
 urls=document.getElementById("iris").value+urls;
-urls=urls.replace("\\n"," ").replace("\n"," ");
+urls=urls.replace("\\n"," ").replace("\n"," ").replace(/\"/g," ");
 u=urls.split(" ");
 urls=u[0];
 urls=urls+"<br><img style='max-width:100%' src='"+urls+"' />";
@@ -106,7 +106,7 @@ if(ur.length>2){
 urls="";
 for(i=1;i<ur.length;i++){
 urlstmp="http"+ur[i];
-urlstmp=urlstmp.replace("\\n"," ").replace("\n"," ");
+urlstmp=urlstmp.replace("\\n"," ").replace("\n"," ").replace(/\"/g," ");
 u=urlstmp.split(" ");
 urlstmp=u[0];
   if(urlstmp==urlstmp.replace("imgproxy.iris.to","")){
